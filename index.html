@@ -703,7 +703,7 @@ button:disabled{opacity:.6;cursor:default}
   cards.forEach(function(c){ c.querySelector('.add').addEventListener('click',function(){ toggle(c.dataset.id); }); });
   document.getElementById('allBtn').addEventListener('click',function(){ picks=ids.slice(); save(); render(); });
   document.getElementById('clearBtn').addEventListener('click',function(){ picks=[]; save(); render(); });
-  var CLIENT='Uncle Mo (GEM + H2O)', WHO='Mo', ENDPOINT='https://api.web3forms.com/submit', KEY='PASTE_KEY_HERE';
+  var CLIENT='Uncle Mo (GEM + H2O)', WHO='Mo', ENDPOINT='https://api.web3forms.com/submit', KEY='baef3296-b04e-410b-a53c-ab1d90c7b532';
   var sendBtn=document.getElementById('sendBtn'), sendBox=document.getElementById('sendBox'), sentBox=document.getElementById('sentBox'), sending=false;
   function val(id){ return (document.getElementById(id).value||'').trim(); }
   sendBtn.addEventListener('click',function(){
