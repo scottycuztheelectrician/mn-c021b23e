@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Uncle Mo Walkthrough</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<style>
+/* Layout: a walk-through for Uncle Mo. Cover that fades through his own job photos, a note from his nephew, a plain-words explainer, a chat to try, then, then a cream floor of nine capped cards (each with a small working example on a navy stage), a navy "one app" band, and one gradient close where the picked list lives. Fix Your Brand colors, one committed look on purpose. */
+:root{
+  --navy:#0F1830; --navy-2:#18244A; --navy-3:#22305C; --line-d:#2C3B6B;
+  --cream:#F6F4EF; --white:#FFFFFF; --rule:#E2DCCF;
+  --ink:#0F1830; --body:#4A5568; --body-d:#BCC6DC; --muted-d:#8E9AB5;
+  --pink:#F0548E; --pink-t:#C2185B; --blue:#3D7BFF; --blue-t:#2457C5; --blue-l:#5B9CFF;
+  --violet:#6A3FC8; --blush:#FFE3EE; --ok:#3DDC97;
+  --display:"Space Grotesk", Arial, sans-serif; --sans:"DM Sans", Arial, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:92px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(44px,6.4vw,84px);line-height:1}
+h2{font-size:clamp(32px,4vw,50px);line-height:1.05}
+h3{font-size:27px;line-height:1.15}
+p{margin:0}
+.eyebrow{font-size:14px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--pink-t)}
+a:focus-visible,button:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+
+/* ---------- Cover ---------- */
+.cover{background:var(--navy);color:var(--cream)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;padding-block:26px}
+.mark{font-weight:700;font-size:15px;letter-spacing:.3em;color:var(--pink)}
+.for{font-size:15px;color:var(--body-d)}
+.cover-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center;padding-block:36px 84px}
+.cover-txt{display:flex;flex-direction:column;gap:24px;min-width:0}
+.cover .eyebrow{color:var(--pink)}
+.cover h1 em{font-style:normal;color:var(--pink)}
+.cover .lead{font-size:clamp(19px,2vw,23px);color:var(--body-d);max-width:34em}
+.cover .lead b{color:var(--cream)}
+.go{display:flex;gap:14px 22px;align-items:center;flex-wrap:wrap}
+.btn{font:700 18px var(--sans);background:var(--pink);color:var(--navy);border:0;border-radius:999px;padding:16px 28px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .15s, filter .15s}
+.btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.go span{font-size:16px;color:var(--muted-d)}
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+.shots figure{margin:0;border-radius:20px;overflow:hidden;aspect-ratio:3/4.6;background:var(--navy-2)}
+.shots figure:nth-child(1){margin-top:56px}
+.shots figure:nth-child(3){margin-top:112px}
+.shots img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---------- Menu ---------- */
+.menu{padding-block:80px 30px}
+.group{padding-bottom:70px}
+.ghead{display:flex;flex-direction:column;gap:12px;margin-bottom:34px;max-width:46em}
+.ghead p:last-child{font-size:20px;color:var(--body)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.card{background:var(--white);border:1px solid var(--rule);border-top:8px solid var(--pink);border-radius:20px;display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.card.blue{border-top-color:var(--blue)}
+.card.on{border-color:var(--navy);border-top-color:var(--navy)}
+.cbody{padding:24px 26px 26px;display:flex;flex-direction:column;gap:14px;flex:1}
+.ctop{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.tag{flex:none;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--navy);color:var(--cream);border-radius:999px;padding:6px 12px;margin-top:4px}
+.what{color:var(--body);font-size:18px}
+.gets{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:17px;color:var(--ink)}
+.gets li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start}
+.gets li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--pink);margin-top:9px;justify-self:center}
+.card.blue .gets li::before{background:var(--blue)}
+.add{margin-top:auto;align-self:flex-start;font:700 17px var(--sans);background:var(--pink);color:var(--navy);border:0;border-radius:999px;padding:14px 24px;cursor:pointer;transition:transform .15s}
+.add:hover{transform:translateY(-1px)}
+.card.on .add{background:var(--navy);color:var(--cream)}
+.card.wide{grid-column:1 / -1;flex-direction:row}
+.card.wide .stage{flex:1.15;margin:20px 0 20px 20px}
+.card.wide .cbody{flex:1;justify-content:center}
+
+/* ---------- Stages: small working examples ---------- */
+.stage{position:relative;height:350px;margin:20px 20px 0;border-radius:14px;overflow:hidden;background:var(--navy);color:var(--cream);font-size:15px;line-height:1.35;min-width:0}
+.stage > img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.s{transition:opacity .4s ease, transform .4s ease}
+.s.hid{opacity:0;transform:translateY(8px)}
+.bub{max-width:86%;padding:9px 13px;border-radius:16px}
+.lab{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+
+/* web chat */
+.urlbar{position:absolute;left:0;right:0;top:0;background:rgba(15,24,48,.86);padding:9px 12px;display:flex;gap:6px;align-items:center;font-size:12px;color:var(--body-d)}
+.urlbar i{width:9px;height:9px;border-radius:50%;background:var(--line-d)}
+.urlbar span{margin-left:8px;background:var(--navy-2);border-radius:6px;padding:3px 10px;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.widget{position:absolute;right:14px;bottom:14px;width:min(270px,calc(100% - 28px));background:var(--white);color:var(--ink);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.widget .wh{background:var(--navy);color:var(--cream);padding:10px 14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.widget .wh i{width:9px;height:9px;border-radius:50%;background:var(--ok)}
+.widget .wt{padding:12px;display:flex;flex-direction:column;gap:7px}
+.widget .c{align-self:flex-end;background:var(--navy);color:var(--cream);border-bottom-right-radius:5px}
+.widget .b{align-self:flex-start;background:var(--cream);border-bottom-left-radius:5px}
+
+/* DMs */
+.dm{position:absolute;inset:0;display:flex;flex-direction:column}
+.dmh{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--line-d)}
+.dmh .av{width:36px;height:36px;border-radius:50%;border:2px solid var(--pink);overflow:hidden;flex:none}
+.dmh .av img{width:100%;height:100%;object-fit:cover;display:block}
+.dmh b{font-size:15px}
+.dmh small{display:block;font-size:12px;color:var(--muted-d)}
+.dmt{flex:1;min-height:0;padding:14px 16px;display:flex;flex-direction:column;gap:8px;justify-content:flex-end}
+.dmt .c{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-right-radius:5px}
+.dmt .b{align-self:flex-start;background:var(--navy-3);border-bottom-left-radius:5px}
+.reply{align-self:flex-end;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted-d)}
+.reply img{width:46px;height:46px;border-radius:8px;object-fit:cover}
+
+/* phone */
+.call{position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;gap:12px}
+.callh{display:flex;align-items:center;gap:14px}
+.ring{width:54px;height:54px;border-radius:50%;background:var(--pink);flex:none;display:grid;place-items:center;animation:ring 1.8s infinite}
+.ring svg{width:26px;height:26px}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(240,84,142,.55)}100%{box-shadow:0 0 0 18px rgba(240,84,142,0)}}
+.callh b{font:700 19px var(--display);display:block}
+.callh small{font-size:13px;color:var(--muted-d)}
+.wave{margin-left:auto;display:flex;align-items:center;gap:3px;height:34px}
+.wave i{width:4px;border-radius:4px;background:var(--blue-l);height:30%;animation:wv 1s ease-in-out infinite}
+.wave i:nth-child(2){animation-delay:.1s}.wave i:nth-child(3){animation-delay:.25s}.wave i:nth-child(4){animation-delay:.4s}.wave i:nth-child(5){animation-delay:.15s}.wave i:nth-child(6){animation-delay:.3s}
+@keyframes wv{50%{height:100%}}
+.lines{display:flex;flex-direction:column;gap:8px;flex:1;justify-content:center}
+.ln{background:var(--navy-2);border-radius:12px;padding:10px 13px}
+.ln .lab{display:block;color:var(--muted-d);margin-bottom:2px}
+.ln.ai .lab{color:var(--pink)}
+.sent{display:flex;align-items:center;gap:8px;background:rgba(61,220,151,.14);color:var(--ok);border-radius:999px;padding:8px 14px;font-weight:700;font-size:14px;align-self:flex-start}
+
+/* booking */
+.cal{position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;gap:12px}
+.calh{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.calh b{font:700 18px var(--display)}
+.calh small{color:var(--muted-d);font-size:13px}
+.grid5{display:grid;grid-template-columns:44px repeat(5,minmax(0,1fr));gap:6px;flex:1;font-variant-numeric:tabular-nums}
+.grid5 .d{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-d);text-align:center;align-self:end}
+.grid5 .t{font-size:12px;color:var(--muted-d);align-self:center}
+.slot{border-radius:9px;border:1px dashed var(--line-d);min-height:44px}
+.slot.tk{border:0;background:var(--navy-3)}
+.slot.new{border:0;background:var(--pink);color:var(--navy);font-weight:700;font-size:12px;line-height:1.15;padding:6px;display:flex;align-items:center;animation:glow 2s infinite}
+@keyframes glow{50%{box-shadow:0 0 0 6px rgba(240,84,142,.22)}}
+
+/* auto posting */
+.week{position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;gap:14px}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;flex:1;align-content:center}
+.day{display:flex;flex-direction:column;gap:6px;align-items:center;min-width:0}
+.day .d{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--muted-d)}
+.day .ph{width:100%;aspect-ratio:9/14;border-radius:9px;overflow:hidden;background:var(--navy-2)}
+.day .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.day .tm{font-size:11px;color:var(--body-d);font-variant-numeric:tabular-nums;white-space:nowrap}
+.day .stt{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 0;width:100%;text-align:center;background:rgba(61,220,151,.16);color:var(--ok)}
+.day.q .stt{background:var(--navy-3);color:var(--body-d)}
+.day.q .ph{opacity:.55}
+
+/* 30 days */
+.month{position:absolute;inset:0;padding:14px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(5,minmax(0,1fr));gap:6px}
+.month div{position:relative;border-radius:8px;background-color:var(--navy-2);background-repeat:no-repeat;overflow:hidden}
+.month span{position:absolute;left:5px;top:4px;font:700 11px var(--sans);color:#fff;background:rgba(15,24,48,.72);border-radius:999px;padding:1px 6px;font-variant-numeric:tabular-nums}
+
+/* carousel */
+.caro{position:absolute;inset:0;overflow:hidden}
+.track{display:flex;height:100%;transition:transform .7s cubic-bezier(.6,0,.2,1)}
+.slide{position:relative;flex:0 0 100%;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 22px 46px}
+.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,24,48,.94) 0%,rgba(15,24,48,.55) 55%,rgba(15,24,48,.15) 100%)}
+.slide > *:not(img){position:relative;z-index:1}
+.slide .lab{color:var(--pink);margin-bottom:8px}
+.slide b{font:700 clamp(22px,2.6vw,29px)/1.08 var(--display);max-width:16em}
+.dots{position:absolute;left:0;right:0;bottom:16px;z-index:2;display:flex;justify-content:center;gap:7px}
+.dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .3s, width .3s}
+.dots i.on{background:var(--pink);width:22px;border-radius:8px}
+.count{position:absolute;right:14px;top:14px;z-index:2;background:rgba(15,24,48,.78);border-radius:999px;padding:4px 11px;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+
+/* reels */
+.reels{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;gap:14px;padding:16px}
+.reel{position:relative;height:100%;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:var(--navy-2);flex:none}
+.reel.sm{height:72%;opacity:.45}
+.reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reel.main img{animation:pan 9s ease-in-out infinite alternate}
+@keyframes pan{from{transform:scale(1.35) translate(6%,4%)}to{transform:scale(1.05) translate(-2%,-2%)}}
+.reel.main::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,24,48,.9),transparent 45%)}
+.rcap{position:absolute;left:12px;right:12px;bottom:22px;z-index:1;font:700 16px/1.15 var(--display)}
+.rcap small{display:block;font:500 11px var(--sans);color:var(--body-d);margin-bottom:4px}
+.rbar{position:absolute;left:12px;right:12px;bottom:10px;height:3px;border-radius:3px;background:rgba(255,255,255,.3);z-index:1;overflow:hidden}
+.rbar i{display:block;height:100%;width:35%;background:var(--pink);animation:prog 9s linear infinite}
+@keyframes prog{from{width:0}to{width:100%}}
+.play{position:absolute;left:10px;top:10px;z-index:1;background:rgba(15,24,48,.75);border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700;letter-spacing:.1em}
+
+/* ads */
+.adflow{position:absolute;inset:0;padding:16px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+.ad{background:var(--white);color:var(--ink);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;height:100%;min-height:0}
+.ad .hd{display:flex;gap:9px;align-items:center;padding:9px 12px;font-size:13px;font-weight:700}
+.ad .hd i{width:28px;height:28px;border-radius:50%;background:var(--navy);color:var(--cream);display:grid;place-items:center;font:700 9px var(--display);font-style:normal;flex:none}
+.ad .hd small{display:block;font-weight:400;color:var(--body);font-size:11px}
+.ad .im{position:relative;flex:1;min-height:0}
+.ad .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ad .ft{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;font:700 14px/1.15 var(--display)}
+.ad .ft span{flex:none;background:var(--blue-t);color:#fff;border-radius:7px;padding:7px 11px;font:700 12px var(--sans);white-space:nowrap}
+.leadbox{display:flex;flex-direction:column;gap:9px;min-width:0}
+.leadbox .lab{color:var(--pink)}
+.row{background:var(--navy-2);border-radius:11px;padding:9px 12px;display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.row span{color:var(--muted-d);flex:none}
+.row b{text-align:right;min-width:0}
+
+/* ---------- One app band ---------- */
+.one{background:var(--navy);color:var(--cream);padding-block:84px}
+.one .eyebrow{color:var(--pink)}
+.one-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.one-txt{display:flex;flex-direction:column;gap:20px;min-width:0}
+.one-txt p{color:var(--body-d);font-size:20px;max-width:30em}
+.proof{display:flex;flex-direction:column;gap:14px;margin-top:10px;padding-top:24px;border-top:1px solid var(--line-d)}
+.proof div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:baseline}
+.proof b{font:700 34px var(--display);color:var(--cream);font-variant-numeric:tabular-nums;white-space:nowrap}
+.proof span{color:var(--body-d);font-size:17px}
+.inbox{background:var(--navy-2);border:1px solid var(--line-d);border-radius:20px;padding:10px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.inbox .ih{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px 6px;font:700 18px var(--display)}
+.inbox .ih small{font:700 12px var(--sans);letter-spacing:.14em;color:var(--ok);display:flex;align-items:center;gap:8px}
+.inbox .ih small i{width:9px;height:9px;border-radius:50%;background:var(--ok)}
+.item{background:var(--navy);border-radius:13px;padding:13px 15px;display:grid;grid-template-columns:118px minmax(0,1fr) auto;gap:14px;align-items:center;font-size:16px}
+.item .ch{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--pink);border-radius:999px;padding:5px 0;text-align:center}
+.item:nth-child(odd) .ch{background:var(--blue-l)}
+.item p{min-width:0;color:var(--body-d)}
+.item p b{color:var(--cream);font-weight:700}
+.item time{font-size:13px;color:var(--muted-d);white-space:nowrap}
+
+/* ---------- Your list ---------- */
+.list{background:linear-gradient(135deg,#C2185B 0%,#6A3FC8 55%,#2457C5 100%);color:#fff;padding-block:84px}
+.list .eyebrow{color:var(--blush)}
+.list-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.list-txt{display:flex;flex-direction:column;gap:22px;min-width:0}
+.list-txt > p{color:var(--blush);font-size:20px;max-width:30em}
+.next{margin:0;padding:0;list-style:none;counter-reset:n;display:flex;flex-direction:column;gap:14px}
+.next li{counter-increment:n;display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:start;font-size:18px;color:#fff}
+.next li::before{content:counter(n);width:40px;height:40px;border-radius:50%;background:rgba(15,24,48,.35);border:1px solid rgba(255,255,255,.4);display:grid;place-items:center;font:700 18px var(--display)}
+.next li span{padding-top:6px}
+.ticket{background:var(--navy);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.ticket h3{font-size:24px}
+.picked{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.picked li{background:var(--navy-2);border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:18px;font-weight:500}
+.picked button{flex:none;font:700 13px var(--sans);background:transparent;color:var(--body-d);border:1px solid var(--line-d);border-radius:999px;padding:6px 12px;cursor:pointer}
+.picked button:hover{border-color:var(--pink);color:var(--cream)}
+.none{border:1px dashed var(--line-d);border-radius:12px;padding:20px;color:var(--body-d);font-size:17px;text-align:center}
+#listText{width:100%;min-height:150px;resize:vertical;font:16px/1.45 var(--sans);color:var(--cream);background:var(--navy-2);border:1px solid var(--line-d);border-radius:12px;padding:14px}
+.acts{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.ghost{font:700 15px var(--sans);background:transparent;color:var(--cream);border:1px solid var(--line-d);border-radius:999px;padding:13px 18px;cursor:pointer}
+.ghost:hover{border-color:var(--blue-l)}
+.said{font-size:15px;color:var(--ok);font-weight:700;min-height:1.4em}
+.foot{padding-block:26px;color:var(--body);font-size:14px}
+
+/* ---------- Tray ---------- */
+.tray{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--navy);color:var(--cream);border-top:3px solid var(--pink);padding-bottom:env(safe-area-inset-bottom, 0px)}
+.tray .wrap{display:flex;align-items:center;gap:16px;padding-block:12px}
+.tcount{flex:none;font:700 19px var(--display);display:flex;align-items:center;gap:10px}
+.tcount b{min-width:38px;height:38px;border-radius:50%;background:var(--pink);color:var(--navy);display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.chips{flex:1;min-width:0;display:flex;gap:8px;overflow:hidden;white-space:nowrap}
+.chips span{flex:none;font-size:14px;background:var(--navy-2);border:1px solid var(--line-d);border-radius:999px;padding:6px 12px}
+.chips em{font-style:normal;color:var(--muted-d);font-size:15px;overflow:hidden;text-overflow:ellipsis}
+.tray .btn{flex:none;font-size:16px;padding:12px 22px}
+
+@media (max-width:980px){
+  .cover-grid,.one-grid,.list-grid{grid-template-columns:1fr;gap:40px}
+  .cover-grid{padding-block:20px 60px}
+  .cards{grid-template-columns:1fr}
+  .card.wide{flex-direction:column}
+  .card.wide .stage{flex:none;margin:20px 20px 0}
+  .shots figure{aspect-ratio:3/4}
+  .shots figure:nth-child(1){margin-top:24px}
+  .shots figure:nth-child(3){margin-top:48px}
+}
+@media (max-width:620px){
+  body{font-size:17px}
+  .stage{margin:14px 14px 0;height:340px}
+  .card.wide .stage{margin:14px 14px 0;height:auto}
+  .adflow{position:static;grid-template-columns:1fr}
+  .ad{height:300px}
+  .cbody{padding:20px 18px 22px}
+  .chips{display:none}
+  .tray .wrap{justify-content:space-between}
+  .item{grid-template-columns:1fr auto;gap:6px 12px}
+  .item .ch{justify-self:start;padding:5px 12px}
+  .item p{grid-column:1 / -1;grid-row:2}
+  .reel.sm{display:none}
+  .reply{display:none}
+  .stage.fit{height:auto}
+  .stage.fit .week{position:static}
+  .day .tm{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- INS: blueprint art instead of photos ---------- */
+.sky{position:absolute;inset:0;width:100%;height:100%;display:block}
+.plan{position:relative;border-radius:20px;overflow:hidden;background:var(--navy-2);border:1px solid var(--line-d);aspect-ratio:5/4;min-width:0}
+.plan .cap{position:absolute;left:16px;right:16px;top:14px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--body-d)}
+.plan .cap b{color:var(--pink)}
+.stage > .sky{opacity:.9}
+.slide > svg.sky{position:absolute;z-index:0}
+.reel.main .sky{animation:pan 9s ease-in-out infinite alternate}
+.tile{background-color:var(--navy-3);background-image:linear-gradient(rgba(91,156,255,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(91,156,255,.2) 1px,transparent 1px);background-size:13px 13px;display:grid;place-items:center;text-align:center;font:700 10px/1.15 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--cream);padding:2px}
+.tile.p{background-color:#6B2256}
+.tile.b{background-color:#234AA6}
+.dmh .av.txt{display:grid;place-items:center;background:var(--navy-3);font:700 11px var(--display);color:var(--cream)}
+@media (max-width:980px){.plan{aspect-ratio:16/9}}
+
+/* ---------- v02: video cover, note, live chat ---------- */
+.cover{position:relative;overflow:hidden;isolation:isolate}
+.cover .bgv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cover::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(15,24,48,.95) 0%,rgba(15,24,48,.8) 42%,rgba(15,24,48,.3) 100%),linear-gradient(0deg,var(--navy) 0%,rgba(15,24,48,0) 38%)}
+.hero-body{max-width:860px;display:flex;flex-direction:column;gap:26px;padding-block:56px 96px}
+.btn2{font:700 18px var(--sans);color:var(--cream);border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:15px 26px;text-decoration:none;display:inline-block;background:rgba(15,24,48,.45)}
+.btn2:hover{border-color:var(--pink)}
+.facts{display:flex;gap:10px;flex-wrap:wrap}
+.facts span{font-size:15px;font-weight:500;border:1px solid rgba(255,255,255,.22);background:rgba(15,24,48,.55);border-radius:999px;padding:8px 15px}
+.note{padding-block:84px 40px}
+.note-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center}
+.letter{background:var(--white);border:1px solid var(--rule);border-top:8px solid var(--pink);border-radius:20px;padding:40px 42px;display:flex;flex-direction:column;gap:18px;font-size:21px;line-height:1.5;color:var(--ink);min-width:0}
+.letter .hi{font:700 32px var(--display)}
+.letter .sig{font:700 28px var(--display);margin-top:4px}
+.letter .sig small{display:block;font:500 15px var(--sans);color:var(--body);letter-spacing:.02em}
+.note-photo{position:relative;margin:0;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:var(--navy-2);min-width:0}
+.note-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.note-photo figcaption{position:absolute;left:14px;bottom:14px;background:rgba(15,24,48,.82);color:var(--cream);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700}
+.try{position:relative;background:var(--navy);color:var(--cream);padding-block:84px;overflow:hidden;isolation:isolate}
+.try .sky{z-index:-1;opacity:.22}
+.try .eyebrow{color:var(--pink)}
+.try-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.try-txt{display:flex;flex-direction:column;gap:20px;min-width:0}
+.try-txt p{color:var(--body-d);font-size:20px;max-width:30em}
+.livechat{background:var(--navy-2);border:1px solid var(--line-d);border-radius:20px;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.lc-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:15px 18px;border-bottom:1px solid var(--line-d);font:700 19px var(--display)}
+.lc-h small{font:700 12px var(--sans);letter-spacing:.14em;color:var(--ok);display:flex;align-items:center;gap:8px}
+.lc-h small i{width:9px;height:9px;border-radius:50%;background:var(--ok)}
+.lc-t{height:330px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;font-size:17px;line-height:1.4}
+.lc-t p{max-width:86%;padding:11px 15px;border-radius:18px;white-space:pre-wrap}
+.lc-t .c{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-right-radius:6px}
+.lc-t .b{align-self:flex-start;background:var(--navy-3);border-bottom-left-radius:6px}
+.lc-q{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 12px}
+.lc-q button{font:500 15px var(--sans);background:transparent;color:var(--cream);border:1px solid var(--line-d);border-radius:999px;padding:9px 14px;cursor:pointer}
+.lc-q button:hover{border-color:var(--pink)}
+.lc-f{display:flex;gap:10px;padding:12px 16px 16px;border-top:1px solid var(--line-d)}
+.lc-f input{flex:1;min-width:0;font:17px var(--sans);color:var(--cream);background:var(--navy);border:1px solid var(--line-d);border-radius:999px;padding:13px 18px}
+.lc-f input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.lc-f .btn{padding:13px 22px;font-size:16px}
+.lc-n{padding:0 18px 14px;font-size:14px;color:var(--muted-d)}
+.reel video,.ad .im video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media (max-width:980px){.note-grid,.try-grid{grid-template-columns:1fr;gap:36px}.note-photo{aspect-ratio:16/10}.hero-body{padding-block:28px 64px}}
+@media (max-width:620px){.letter{padding:28px 22px;font-size:19px}.lc-t{height:300px}}
+
+/* ---------- Uncle Mo: bigger type, photo cover, plain-words explainer ---------- */
+body{font-size:19px}
+.slides{position:absolute;inset:0;z-index:-2}
+.slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+.slides img.on{opacity:1;animation:kb 9s ease-out forwards}
+@keyframes kb{from{transform:scale(1.12) translate(1.5%,1%)}to{transform:scale(1.02) translate(0,0)}}
+.cover .lead{font-size:clamp(20px,2.1vw,25px)}
+.letter{font-size:22px}
+.biz{position:absolute;left:12px;top:12px;z-index:3;font:700 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;background:var(--pink);color:var(--navy);border-radius:999px;padding:5px 11px}
+.biz.h{background:var(--blue-l)}
+.stage .urlbar{padding-left:150px}
+.how{padding-block:40px 30px}
+.how .ghead{margin-bottom:30px}
+.how-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.hc{background:var(--white);border:1px solid var(--rule);border-top:8px solid var(--pink);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.hc:nth-child(2){border-top-color:var(--blue)}
+.hc p{color:var(--body);font-size:19px}
+.plain{margin-top:26px;background:var(--navy);color:var(--cream);border-radius:20px;padding:26px 30px;font:700 clamp(21px,2.3vw,27px)/1.25 var(--display)}
+.plain em{font-style:normal;color:var(--pink)}
+.switch{display:flex;gap:8px;padding:12px 16px 0}
+.switch button{flex:1;font:700 15px var(--sans);background:transparent;color:var(--body-d);border:1px solid var(--line-d);border-radius:999px;padding:10px 12px;cursor:pointer}
+.switch button[aria-pressed="true"]{background:var(--pink);border-color:var(--pink);color:var(--navy)}
+.reel.sm img{animation:pan 11s ease-in-out infinite alternate-reverse}
+.send select{font:17px var(--sans);color:var(--cream);background:var(--navy-2);border:1px solid var(--line-d);border-radius:12px;padding:13px 14px;width:100%}
+@media (max-width:980px){.how-grid{grid-template-columns:1fr}}
+@media (max-width:620px){body{font-size:18px}.stage .urlbar{padding-left:12px;padding-top:40px}}
+
+
+/* ---------- send to Scott ---------- */
+.send{display:flex;flex-direction:column;gap:14px}
+.send label{display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:700;color:var(--body-d)}
+.send input,.send textarea{font:17px var(--sans);color:var(--cream);background:var(--navy-2);border:1px solid var(--line-d);border-radius:12px;padding:13px 14px;width:100%}
+.send textarea{resize:vertical;min-height:64px}
+.send input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.said.bad{color:#FFB547}
+.sentbox{background:rgba(61,220,151,.12);border:1px solid var(--ok);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.sentbox h3{color:var(--ok);font-size:26px}
+.sentbox p{color:var(--cream);font-size:18px}
+.sentbox .ghost{align-self:flex-start}
+button:disabled{opacity:.6;cursor:default}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="slides" id="slides" aria-hidden="true"><img src="img/g01.jpg" alt="" class="on"><img src="img/g04.jpg" alt=""><img src="img/g08.jpg" alt=""><img src="img/g05.jpg" alt=""><img src="img/h01.jpg" alt=""></div>
+  <div class="wrap top"><span class="mark">FIX YOUR BRAND</span><span class="for">Made for Maurice Piccolo · GEM Contracting · H2O L’Acqua</span></div>
+  <div class="wrap">
+    <div class="hero-body">
+      <p class="eyebrow">For Uncle Mo</p>
+      <h1>Uncle Mo, I built <em>this for you.</em></h1>
+      <p class="lead">You do the work: pavers, pools, kitchens, and the best water systems out of Italy. <b>I built a helper that answers your phone, texts people back and shows off your jobs.</b> You never have to touch a computer.</p>
+      <div class="go"><a class="btn" href="#how">See what it does</a><a class="btn2" href="#try">Try it yourself</a></div>
+      <div class="facts"><span>GEM Contracting · since 2013</span><span>H2O L’Acqua · Italian systems since 1991</span><span>All of New Jersey and NYC</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="note">
+  <div class="wrap note-grid">
+    <div class="letter">
+      <p class="hi">Uncle Mo,</p>
+      <p>I know computers and this AI stuff are not your thing. That’s fine. They don’t have to be.</p>
+      <p>I looked at both of your websites, GEM and the water company. The work is beautiful. But when you’re out on a job, somebody still has to pick up the phone, text customers back and post your work.</p>
+      <p>That’s what I built this for. It runs by itself. You don’t have to learn anything. You just get the calls and the appointments.</p>
+      <p>Take a look, tap what you like, and hit Send. Or just call me.</p>
+      <p class="sig">Scott<small>Your nephew · Fix Your Brand</small></p>
+    </div>
+    <figure class="note-photo"><img src="img/g04.jpg" alt="A paver driveway lit up at night"><figcaption>A GEM driveway, from your own gallery</figcaption></figure>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="ghead">
+      <p class="eyebrow">What is this AI thing?</p>
+      <h2>Think of it as a helper who never goes home.</h2>
+      <p>It’s not a robot and it’s not complicated. It’s a helper that knows your two businesses and works nights, weekends and holidays.</p>
+    </div>
+    <div class="how-grid">
+      <div class="hc"><h3>It answers.</h3><p>Your phone, your website, your Facebook. Day or night. It talks like a person and it knows what you do.</p></div>
+      <div class="hc"><h3>It follows up.</h3><p>It gets the customer’s name and number, books the visit, and sends you a text about it.</p></div>
+      <div class="hc"><h3>It shows your work.</h3><p>It posts your jobs online and runs your ads, so people who never heard of you find you.</p></div>
+    </div>
+    <p class="plain">You don’t type anything. You don’t learn anything. <em>I set it up. You answer your phone.</em></p>
+  </div>
+</section>
+
+<section class="try" id="try">
+  <div class="wrap try-grid">
+    <div class="try-txt">
+      <p class="eyebrow">Try it yourself</p>
+      <h2>Pretend you’re a customer. Ask it something.</h2>
+      <p>Pick GEM or the water company, then tap one of the questions. This is what your customers would get back, in seconds, even at midnight.</p>
+      <p>Everything it knows came from your own two websites.</p>
+    </div>
+    <div class="livechat">
+      <div class="lc-h"><span id="lcName">GEM Contracting</span> <small><i></i><span id="lcBadge">DEMO</span></small></div>
+      <div class="switch" id="lcSwitch"><button type="button" data-biz="gem" aria-pressed="true">GEM Contracting</button><button type="button" data-biz="h2o" aria-pressed="false">H2O L’Acqua</button></div>
+      <div class="lc-t" id="lcThread" aria-live="polite"></div>
+      <div class="lc-q" id="lcQuick"></div>
+      <form class="lc-f" id="lcForm"><input id="askInput" type="text" autocomplete="off" placeholder="Or type a question…" aria-label="Ask a question"><button class="btn" type="submit" id="lcSend">Send</button></form>
+      <p class="lc-n" id="lcNote">Preview: these answers are pre-written samples built from your two websites.</p>
+    </div>
+  </div>
+</section>
+
+<main class="menu" id="menu">
+  <div class="wrap">
+
+    <section class="group">
+      <div class="ghead">
+        <p class="eyebrow">Answer every customer</p>
+        <h2>You’re on a job. The phone still gets answered.</h2>
+        <p>People who can’t reach you call the next guy. These make sure somebody always answers for GEM and for the water company.</p>
+      </div>
+      <div class="cards">
+
+        <article class="card" data-id="webchat" data-name="Chat on the website">
+          <div class="stage"><span class="biz h">H2O L’Acqua</span><img class="bg" src="img/h01.jpg" alt=""><div class="urlbar"><i></i><i></i><i></i><span>h2olacqua.com</span></div><div class="widget"><div class="wh"><i></i>Chat with H2O L’Acqua</div><div class="wt" data-seq><p class="bub c s">Is my well water safe?</p><p class="bub b s">We test it free at your home. Want to book?</p><p class="bub c s">Saturday morning?</p><p class="bub b s">Saturday at 10. You’re booked.</p></div></div></div>
+          <div class="cbody">
+            <div class="ctop"><h3>Chat on your website</h3></div>
+            <p class="what">A little chat box on your website. Someone asks a question, it answers right away and gets their number for you.</p>
+            <ul class="gets"><li>Works on both websites</li><li>Knows your services, hours and offers</li><li>Sends you the name and number</li></ul>
+            <button class="add" type="button" id="add-webchat">Add to my list</button>
+          </div>
+        </article>
+
+        <article class="card blue" data-id="social" data-name="Answers on Facebook and Instagram">
+          <div class="stage"><div class="dm"><div class="dmh"><span class="av"><img src="img/h03.jpg" alt=""></span><div><b>h2olacqua</b><small>Instagram · Facebook · comments and messages</small></div></div><div class="dmt" data-seq><div class="reply s"><span>Replied to your post</span><img src="img/h04.jpg" alt=""></div><p class="bub c s">Do you have financing?</p><p class="bub b s">Yes, 100% financing is available, subject to approval. Want a free water test first?</p><p class="bub c s">Yes</p><p class="bub b s">Great. What’s your address and best number?</p></div></div></div>
+          <div class="cbody">
+            <div class="ctop"><h3>Answers on Facebook and Instagram</h3></div>
+            <p class="what">When someone messages you or comments on a post, they get a real answer in seconds. No more messages sitting for days.</p>
+            <ul class="gets"><li>Works on Facebook, Instagram and their messages</li><li>Answers the questions people always ask</li><li>Passes the real buyers to you</li></ul>
+            <button class="add" type="button" id="add-social">Add to my list</button>
+          </div>
+        </article>
+
+        <article class="card blue" data-id="phones" data-name="Phone answering">
+          <div class="stage"><span class="biz" style="top:auto;bottom:12px">GEM</span><div class="call"><div class="callh"><span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="#0F1830" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><div><b>Call answered</b><small>7:15 PM · you’re off the clock</small></div><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span></div><div class="lines" data-seq><div class="ln s"><span class="lab">Caller</span>I need a price on a paver driveway in Brick.</div><div class="ln ai s"><span class="lab">GEM’s helper</span>We can do that, and the quote is free. What’s the address and a good number for Mo to call?</div><div class="sent s">✓ Details texted to you</div></div></div></div>
+          <div class="cbody">
+            <div class="ctop"><h3>Your phone gets answered</h3></div>
+            <p class="what">When you’re on a job or it’s after hours, the helper picks up, takes the details and texts them to you.</p>
+            <ul class="gets"><li>Sounds like a person, not a machine</li><li>Takes a message or books the visit</li><li>You get a text after every call</li></ul>
+            <button class="add" type="button" id="add-phones">Add to my list</button>
+          </div>
+        </article>
+
+        <article class="card" data-id="booking" data-name="Automatic booking">
+          <div class="stage"><span class="biz h" style="top:auto;bottom:12px;left:auto;right:12px">H2O L’Acqua</span><div class="cal"><div class="calh"><b>Free water tests this week</b><small>books itself</small></div><div class="grid5"><span></span><span class="d">Mon</span><span class="d">Tue</span><span class="d">Wed</span><span class="d">Thu</span><span class="d">Fri</span><span class="t">10:00</span><span class="slot tk"></span><span class="slot"></span><span class="slot tk"></span><span class="slot"></span><span class="slot tk"></span><span class="t">1:00</span><span class="slot"></span><span class="slot tk"></span><span class="slot"></span><span class="slot tk"></span><span class="slot"></span><span class="t">3:00</span><span class="slot tk"></span><span class="slot"></span><span class="slot"></span><span class="slot new">Maria R.<br>Water test</span><span class="slot"></span></div><div class="sent">✓ Confirmation text sent · reminder set</div></div></div>
+          <div class="cbody">
+            <div class="ctop"><h3>Appointments book themselves</h3></div>
+            <p class="what">Customers pick a time for a free water test or a quote visit. It goes on your calendar. No phone tag.</p>
+            <ul class="gets"><li>Works from the chat, the phone and the ads</li><li>They get a text to confirm</li><li>They get a reminder so they show up</li></ul>
+            <button class="add" type="button" id="add-booking">Add to my list</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="group">
+      <div class="ghead">
+        <p class="eyebrow">Stay in front of them</p>
+        <h2>Your work is beautiful. More people should see it.</h2>
+        <p>You already have the photos: driveways, pool decks, kitchens, the Italian units. This puts them in front of people every week without you doing a thing.</p>
+      </div>
+      <div class="cards">
+
+        <article class="card" data-id="autopost" data-name="Automatic posting">
+          <div class="stage fit"><div class="week"><div class="calh"><b>This week on GEM’s page</b><small>posts itself</small></div><div class="days"><div class="day"><span class="d">MON</span><span class="ph"><img src="img/g01.jpg" alt=""></span><span class="tm">6:30 PM</span><span class="stt">Posted</span></div><div class="day"><span class="d">TUE</span><span class="ph"><img src="img/g13.jpg" alt=""></span><span class="tm">6:30 PM</span><span class="stt">Posted</span></div><div class="day"><span class="d">WED</span><span class="ph"><img src="img/g05.jpg" alt=""></span><span class="tm">6:30 PM</span><span class="stt">Posted</span></div><div class="day"><span class="d">THU</span><span class="ph"><img src="img/g21.jpg" alt=""></span><span class="tm">6:30 PM</span><span class="stt">Posted</span></div><div class="day q"><span class="d">FRI</span><span class="ph"><img src="img/g19.jpg" alt=""></span><span class="tm">6:30 PM</span><span class="stt">Ready</span></div><div class="day q"><span class="d">SAT</span><span class="ph"><img src="img/g18.jpg" alt=""></span><span class="tm">10:00 AM</span><span class="stt">Ready</span></div><div class="day q"><span class="d">SUN</span><span class="ph"><img src="img/g04.jpg" alt=""></span><span class="tm">10:00 AM</span><span class="stt">Ready</span></div></div></div></div>
+          <div class="cbody">
+            <div class="ctop"><h3>Your work posts itself</h3></div>
+            <p class="what">Your job photos go up on Instagram on a set schedule. Nobody has to remember to post.</p>
+            <ul class="gets"><li>I load the posts, the system sends them</li><li>You see them before they go out</li><li>Same days and times, every week</li></ul>
+            <button class="add" type="button" id="add-autopost">Add to my list</button>
+          </div>
+        </article>
+
+        <article class="card blue" data-id="posts30" data-name="30 days of posts">
+          <div class="stage"><div class="month" id="month" aria-label="A month of posts made from your own photos"></div></div>
+          <div class="cbody">
+            <div class="ctop"><h3>30 days of posts</h3></div>
+            <p class="what">A full month of posts made from your own job photos, written and ready to go.</p>
+            <ul class="gets"><li>30 posts with the words written for you</li><li>Driveways, pools, kitchens and the water systems</li><li>You approve before anything posts</li></ul>
+            <button class="add" type="button" id="add-posts30">Add to my list</button>
+          </div>
+        </article>
+
+        <article class="card blue" data-id="carousels" data-name="30 days of swipe posts (carousels)">
+          <div class="stage"><span class="biz">GEM</span><div class="caro" id="caro"><div class="track"><div class="slide"><img src="img/g01.jpg" alt=""><span class="lab">Swipe</span><b>See what pavers can do</b></div><div class="slide"><img src="img/g09.jpg" alt=""><span class="lab">1 of 3</span><b>Before and after.</b></div><div class="slide"><img src="img/g04.jpg" alt=""><span class="lab">2 of 3</span><b>A driveway at night, lights on.</b></div><div class="slide"><img src="img/g20.jpg" alt=""><span class="lab">GEM Contracting</span><b>Want yours next? The quote is free.</b></div></div><span class="count" id="caroCount">1 / 4</span><div class="dots" id="caroDots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div></div></div>
+          <div class="cbody">
+            <div class="ctop"><h3>30 days of swipe posts</h3></div>
+            <p class="what">A swipe post is a few photos in a row that people flip through, like a before and after. They get saved and shared the most.</p>
+            <ul class="gets"><li>A month of swipe posts in your look</li><li>Before and afters, how-it’s-done, the Italian units</li><li>You approve before anything posts</li></ul>
+            <button class="add" type="button" id="add-carousels">Add to my list</button>
+          </div>
+        </article>
+
+        <article class="card" data-id="reels" data-name="Short videos (Reels)">
+          <div class="stage"><span class="biz">GEM</span><div class="reels"><div class="reel sm"><img src="img/g21.jpg" alt=""></div><div class="reel main"><img src="img/g22.jpg" alt=""><span class="play">REEL</span><div class="rcap"><small>GEM Contracting</small>Pool deck, start to finish</div><div class="rbar"><i></i></div></div><div class="reel sm"><img src="img/g15.jpg" alt=""></div></div></div>
+          <div class="cbody">
+            <div class="ctop"><h3>Short videos</h3><span class="tag">Premium</span></div>
+            <p class="what">Short videos of your jobs, the kind people watch on their phone. Video is how new people find a business today.</p>
+            <ul class="gets"><li>Made from your real job footage</li><li>Words and music added</li><li>Costs more, because video takes more work</li></ul>
+            <button class="add" type="button" id="add-reels">Add to my list</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="group">
+      <div class="ghead">
+        <p class="eyebrow">Bring in new customers</p>
+        <h2>Get in front of people who don’t know you yet.</h2>
+        <p>Right now somebody in New Jersey wants a new driveway, a patio or better water. Ads put you in front of them.</p>
+      </div>
+      <div class="cards">
+        <article class="card wide" data-id="ads" data-name="Facebook and Instagram ads">
+          <div class="stage">
+            <span class="biz h" style="top:auto;bottom:12px;left:auto;right:12px">H2O L’Acqua</span>
+            <div class="adflow">
+              <div class="ad">
+                <div class="hd"><i>H2O</i><div>H2O L’Acqua<small>Sponsored</small></div></div>
+                <div class="im"><img src="img/h03.jpg" alt=""></div>
+                <div class="ft">Free water test at your home<span>Book now</span></div>
+              </div>
+              <div class="leadbox" data-seq>
+                <span class="lab s">New customer from this ad</span>
+                <div class="row s"><span>Name</span><b>Maria R.</b></div>
+                <div class="row s"><span>Wants</span><b>Free water test</b></div>
+                <div class="row s"><span>Town</span><b>Toms River, NJ</b></div>
+                <div class="sent s">✓ Texted to you in seconds</div>
+              </div>
+            </div>
+          </div>
+          <div class="cbody">
+            <div class="ctop"><h3>Facebook and Instagram ads</h3></div>
+            <p class="what">Ads that show your work to homeowners near you. When someone’s interested, their name and number come straight to you.</p>
+            <ul class="gets"><li>I write and design the ads</li><li>You approve each ad before it runs</li><li>You set the ad budget. It goes to Facebook, not to me</li></ul>
+            <button class="add" type="button" id="add-ads">Add to my list</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section class="one">
+  <div class="wrap one-grid">
+    <div class="one-txt">
+      <p class="eyebrow">One place for all of it</p>
+      <h2>Two businesses. One app on your phone.</h2>
+      <p>Every call, message and appointment from GEM and from the water company shows up in the same place. Nothing gets lost, and you always know which business it’s for.</p>
+      <div class="proof">
+        <div><b>25 sec</b><span>How fast we answer a new customer at our own company. It used to take 21 minutes.</span></div>
+        <div><b>4.9 stars</b><span>Across 330+ Google reviews at the home-service company we run in New Jersey.</span></div>
+      </div>
+    </div>
+    <div class="inbox" aria-label="Example inbox">
+      <div class="ih">Mo’s inbox <small><i></i>EXAMPLE</small></div>
+      <div class="item"><span class="ch">GEM</span><p><b>Tony V.</b> · paver driveway in Brick, wants a quote</p><time>2 min</time></div>
+      <div class="item"><span class="ch">H2O L’Acqua</span><p><b>Maria R.</b> · free water test, Saturday 10:00</p><time>14 min</time></div>
+      <div class="item"><span class="ch">GEM</span><p><b>Dana K.</b> · kitchen remodel, Freehold</p><time>1 hr</time></div>
+      <div class="item"><span class="ch">H2O L’Acqua</span><p><b>Lisa M.</b> · asked about financing</p><time>2 hr</time></div>
+      <div class="item"><span class="ch">GEM</span><p><b>Sam P.</b> · pool deck pavers, Toms River</p><time>3 hr</time></div>
+    </div>
+  </div>
+</section>
+
+<section class="list" id="list">
+  <div class="wrap list-grid">
+    <div class="list-txt">
+      <p class="eyebrow">Your list</p>
+      <h2>Tell me what you want, Uncle Mo.</h2>
+      <p>You don’t have to take all nine. Pick what makes sense to you.</p>
+      <ol class="next">
+        <li><span>Tap Send. I get your picks right away.</span></li>
+        <li><span>We sit down and go over it together.</span></li>
+        <li><span>You get one price for exactly what you picked.</span></li>
+        <li><span>I set it all up. You see it before anything goes live.</span></li>
+      </ol>
+    </div>
+    <div class="ticket">
+      <h3>Your picks</h3>
+      <ul class="picked" id="picked"></ul>
+      <div class="none" id="none">Nothing picked yet. Tap “Add to my list” on anything above.</div>
+      <div class="send" id="sendBox">
+        <label for="fName">Your name<input id="fName" type="text" autocomplete="name" value="Mo"></label>
+        <label for="fPhone">Best phone number<input id="fPhone" type="tel" autocomplete="tel" placeholder="Optional"></label>
+        <label for="fNote">Anything you want Scott to know<textarea id="fNote" rows="2" placeholder="Optional"></textarea></label>
+        <label for="fBiz">Which business should I start with?<select id="fBiz"><option>Both</option><option>GEM Contracting</option><option>H2O L’Acqua</option></select></label>
+        <input type="text" id="fHp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+        <div class="acts">
+          <button class="btn" type="button" id="sendBtn">Send my picks to Scott</button>
+          <button class="ghost" type="button" id="allBtn">Pick all nine</button>
+          <button class="ghost" type="button" id="clearBtn">Clear</button>
+        </div>
+        <p class="said" id="said" role="status"></p>
+      </div>
+      <div class="sentbox" id="sentBox" hidden>
+        <h3>Sent. Scott has your picks.</h3>
+        <p>He’ll reach out to set up the next step. Nothing else you need to do.</p>
+        <button class="ghost" type="button" id="againBtn">Change my picks</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot"><div class="wrap">Fix Your Brand · Made for Maurice Piccolo · Photos are from gemcontractingnj.com and h2olacqua.com. Customer names, messages and times on this page are examples.</div></footer>
+
+<div class="tray" role="region" aria-label="Your list">
+  <div class="wrap">
+    <span class="tcount"><b id="tNum">0</b>picked</span>
+    <div class="chips" id="chips"></div>
+    <a class="btn" href="#list">See my list</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('.card[data-id]'));
+  var KEY='mo-menu-picks', picks=[];
+  try{ picks=JSON.parse(localStorage.getItem(KEY)||'[]')||[]; }catch(e){ picks=[]; }
+  var ids=cards.map(function(c){return c.dataset.id;});
+  picks=picks.filter(function(p){return ids.indexOf(p)>-1;});
+
+  var picked=document.getElementById('picked'), none=document.getElementById('none'),
+      current=[], chips=document.getElementById('chips'),
+      tNum=document.getElementById('tNum'), said=document.getElementById('said');
+
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(picks)); }catch(e){} }
+  function render(){
+    var names=[];
+    cards.forEach(function(c){
+      var on=picks.indexOf(c.dataset.id)>-1, b=c.querySelector('.add');
+      c.classList.toggle('on',on);
+      b.textContent=on?'✓ On my list':'Add to my list';
+      b.setAttribute('aria-pressed',on?'true':'false');
+      if(on) names.push({id:c.dataset.id,name:c.dataset.name});
+    });
+    tNum.textContent=names.length;
+    picked.innerHTML=''; chips.innerHTML='';
+    names.forEach(function(n){
+      var li=document.createElement('li'), s=document.createElement('span'), x=document.createElement('button');
+      s.textContent=n.name; x.type='button'; x.textContent='Remove';
+      x.addEventListener('click',function(){ toggle(n.id); });
+      li.appendChild(s); li.appendChild(x); picked.appendChild(li);
+      var ch=document.createElement('span'); ch.textContent=n.name; chips.appendChild(ch);
+    });
+    if(!names.length){ var em=document.createElement('em'); em.textContent='Tap “Add to my list” on what you want.'; chips.appendChild(em); }
+    none.hidden=names.length>0;
+    current=names.map(function(n){return n.name;});
+    said.classList.remove('bad'); said.textContent='';
+  }
+  function toggle(id){ var i=picks.indexOf(id); if(i>-1) picks.splice(i,1); else picks.push(id); save(); render(); }
+  cards.forEach(function(c){ c.querySelector('.add').addEventListener('click',function(){ toggle(c.dataset.id); }); });
+  document.getElementById('allBtn').addEventListener('click',function(){ picks=ids.slice(); save(); render(); });
+  document.getElementById('clearBtn').addEventListener('click',function(){ picks=[]; save(); render(); });
+  var CLIENT='Uncle Mo (GEM + H2O)', WHO='Mo', ENDPOINT='https://api.web3forms.com/submit', KEY='PASTE_KEY_HERE';
+  var sendBtn=document.getElementById('sendBtn'), sendBox=document.getElementById('sendBox'), sentBox=document.getElementById('sentBox'), sending=false;
+  function val(id){ return (document.getElementById(id).value||'').trim(); }
+  sendBtn.addEventListener('click',function(){
+    if(sending) return;
+    said.classList.remove('bad');
+    if(!current.length){ said.classList.add('bad'); said.textContent='Pick at least one tool first.'; return; }
+    if(val('fHp')) return;
+    var name=val('fName')||WHO;
+    sending=true; sendBtn.disabled=true; sendBtn.textContent='Sending…'; said.textContent='';
+    var body={access_key:KEY, subject:CLIENT+' picked '+current.length+' tool'+(current.length>1?'s':'')+' ('+name+')', from_name:CLIENT+' tool menu',
+      Client:CLIENT, Name:name, Phone:val('fPhone')||'(not given)',
+      Picks:current.map(function(n,i){return (i+1)+'. '+n;}).join('\n'), Note:val('fNote')||'(none)', Sent:new Date().toLocaleString()};
+    var bizSel=document.getElementById('fBiz'); if(bizSel) body['Start with']=bizSel.value;
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){ return r.json().catch(function(){return {};}).then(function(j){ return {ok:r.ok,j:j}; }); })
+      .then(function(res){ if(res.ok&&res.j&&res.j.success===true){ sendBox.hidden=true; sentBox.hidden=false; } else { throw new Error('send'); } })
+      .catch(function(){ said.classList.add('bad'); said.textContent='That didn’t go through. Please tap Send again, or text Scott your picks.'; })
+      .then(function(){ sending=false; sendBtn.disabled=false; sendBtn.textContent='Send my picks to Scott'; });
+  });
+  document.getElementById('againBtn').addEventListener('click',function(){ sentBox.hidden=true; sendBox.hidden=false; });
+  render();
+
+  /* 30 days: thirty different crops of the photos */
+  var P=['g01','h03','g13','g05','g21','h04','g19','g18','g08','h06','g15','g16','g02','h17','g37'];
+  var pos=['20% 30%','70% 60%','45% 80%','80% 25%','30% 65%','55% 45%','15% 75%'];
+  var month=document.getElementById('month');
+  for(var i=0;i<30;i++){
+    var d=document.createElement('div'), n=document.createElement('span');
+    d.style.backgroundImage='url(img/'+P[i%15]+'.jpg)';
+    d.style.backgroundSize=(i%2?'240%':'cover');
+    d.style.backgroundPosition=pos[(i*3)%7];
+    n.textContent=i+1; d.appendChild(n); month.appendChild(d);
+  }
+
+  /* blueprint city blocks, drawn the same way every time */
+  [].slice.call(document.querySelectorAll('svg[data-sky]')).forEach(function(el){
+    var a=el.getAttribute('data-sky').split(','), seed=+a[0], W=+a[1], H=+a[2], o='', x=10, base=H-28, g;
+    function r(){ seed=(seed*9301+49297)%233280; return seed/233280; }
+    o+='<rect width="'+W+'" height="'+H+'" fill="#18244A"/>';
+    for(g=0;g<=W;g+=40) o+='<line x1="'+g+'" y1="0" x2="'+g+'" y2="'+H+'" stroke="#22305C" stroke-width="1"/>';
+    for(g=0;g<=H;g+=40) o+='<line x1="0" y1="'+g+'" x2="'+W+'" y2="'+g+'" stroke="#22305C" stroke-width="1"/>';
+    while(x<W-40){
+      var w=46+Math.floor(r()*64), h=Math.floor((H-60)*(.3+r()*.65)); if(x+w>W-10) w=W-10-x;
+      var top=base-h;
+      o+='<rect x="'+x+'" y="'+top+'" width="'+w+'" height="'+h+'" fill="#0F1830" stroke="#5B9CFF" stroke-width="2"/>';
+      var cols=Math.max(1,Math.floor((w-10)/16)), rows=Math.max(1,Math.floor((h-14)/22)), off=(w-(cols*16-6))/2;
+      for(var j=0;j<rows;j++) for(var i2=0;i2<cols;i2++){
+        var lit=r()<.2, f=lit?(r()<.5?'#F0548E':'#5B9CFF'):'#18244A';
+        o+='<rect x="'+(x+off+i2*16)+'" y="'+(top+10+j*22)+'" width="10" height="13" fill="'+f+'" stroke="#2C3B6B" stroke-width="1"/>';
+      }
+      x+=w+(r()<.35?12:0);
+    }
+    o+='<line x1="0" y1="'+base+'" x2="'+W+'" y2="'+base+'" stroke="#F6F4EF" stroke-width="2"/>';
+    el.setAttribute('viewBox','0 0 '+W+' '+H); el.innerHTML=o;
+  });
+
+  var motionOK=!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  /* carousel */
+  var caro=document.getElementById('caro'), track=caro.querySelector('.track'),
+      dots=[].slice.call(document.querySelectorAll('#caroDots i')), cc=document.getElementById('caroCount'), ci=0;
+  function slideTo(k){ ci=k%dots.length; track.style.transform='translateX(-'+(ci*100)+'%)'; dots.forEach(function(x,j){x.classList.toggle('on',j===ci);}); cc.textContent=(ci+1)+' / '+dots.length; }
+  if(motionOK) setInterval(function(){ slideTo(ci+1); },2800);
+  caro.addEventListener('click',function(){ slideTo(ci+1); });
+
+  /* conversations play when you scroll to them, then rest fully shown */
+  if(motionOK && 'IntersectionObserver' in window){
+    [].slice.call(document.querySelectorAll('[data-seq]')).forEach(function(box){
+      var steps=[].slice.call(box.querySelectorAll('.s')), t=null, run=false;
+      function play(){
+        steps.forEach(function(s){s.classList.add('hid');}); var i=0;
+        (function next(){ if(!run) return;
+          if(i<steps.length){ t=setTimeout(function(){ steps[i++].classList.remove('hid'); next(); }, i?1100:500); }
+          else t=setTimeout(play,4500);
+        })();
+      }
+      new IntersectionObserver(function(es){ es.forEach(function(e){
+        if(e.isIntersecting&&!run){ run=true; play(); }
+        else if(!e.isIntersecting&&run){ run=false; clearTimeout(t); steps.forEach(function(s){s.classList.remove('hid');}); }
+      }); },{threshold:.55}).observe(box);
+    });
+  }
+  /* reduced motion: hold the videos on their first picture */
+  if(!motionOK){ [].slice.call(document.querySelectorAll('video')).forEach(function(v){ v.removeAttribute('autoplay'); try{v.pause();}catch(e){} }); }
+
+  /* cover: fade through his own job photos */
+  var sl=[].slice.call(document.querySelectorAll('#slides img')), si=0;
+  if(motionOK&&sl.length>1) setInterval(function(){ sl[si].classList.remove('on'); si=(si+1)%sl.length; sl[si].classList.add('on'); },5200);
+
+  /* chat: real AI when the viewer has it, pre-written answers when not */
+  var BIZ={
+    gem:{name:'GEM Contracting', hello:'Hi, thanks for reaching out to GEM Contracting. How can I help?',
+      quick:['Do you do paver driveways?','Can I get a quote?','Do you work in New York City?','Do you do kitchens?'],
+      facts:'You are the assistant for GEM Contracting Management, a New Jersey contractor founded in 2013, NJ home improvement license 13VHO7951900, located in central New Jersey, serving all of New Jersey and New York City. Services: commercial and residential construction, decks and patios, concrete restoration, pavers, driveways, interior flooring, remodeling, kitchens, bathrooms, tile and stone. Quotes and consultations are free with no obligation. Phone 732-298-2438. The owner is Mo.',
+      canned:function(q){
+        if(/quote|price|cost|estimate|how much/.test(q)) return 'Quotes are free and there’s no obligation. What’s the address, and what’s a good number to reach you?';
+        if(/paver|driveway|patio|pool|deck|concrete|walk|step/.test(q)) return 'Yes. Pavers, driveways, patios, pool decks, steps and concrete restoration are what GEM does. Want a free quote? What town is the job in?';
+        if(/kitchen|bath|floor|tile|remodel|interior/.test(q)) return 'Yes, GEM does kitchens, bathrooms, flooring, tile and full remodels. Want someone to come take a look? The quote is free.';
+        if(/nyc|new york|city|area|where|town|serve|jersey/.test(q)) return 'GEM is in central New Jersey and works all over New Jersey and New York City. Where’s your project?';
+        if(/licens/.test(q)) return 'Yes. GEM Contracting Management is a licensed New Jersey home improvement contractor, license 13VHO7951900.';
+        return 'Thanks for reaching out to GEM Contracting. Let me get that to Mo. What’s your name and the best number to reach you?';
+      }},
+    h2o:{name:'H2O L’Acqua', hello:'Hi, thanks for reaching out to H2O L’Acqua. How can I help?',
+      quick:['Is the water test really free?','Do you have financing?','What are your hours?','What’s the Vyrta?'],
+      facts:'You are the assistant for H2O L’Acqua, a water filtration company in Toms River, New Jersey 08757 that sells water systems from Italy; the Italian company was founded in 1991. Products: the H2O l’Acqua system (chilled, sparkling, ambient and hot filtered water), SLIM (compact dispenser), iWATER HIDROSALUD, RO VYRTA (tankless direct-flow reverse osmosis, 800 gallons per day, 5-stage filtration, smart faucet), and Laundry OzonGuard. Offers: a free in-home water test, and 100% financing available subject to approval. Hours: Monday to Friday 9 to 5, Saturday 9 to 2, closed Sunday. Phone 732-298-2438.',
+      canned:function(q){
+        if(/hour|open|close/.test(q)) return 'We’re open Monday to Friday 9 to 5 and Saturday 9 to 2. Closed Sunday. I can take your information any time.';
+        if(/financ|pay|afford|cost|price|how much/.test(q)) return 'We have 100% financing available, subject to approval. The price depends on your water, so we start with a free water test. Want to book one?';
+        if(/vyrta|slim|hidrosalud|system|unit|product|sparkling|osmosis|ozon|laundry|italy|italian/.test(q)) return 'Our systems come from Italy. The RO Vyrta is a compact reverse osmosis unit with no tank. The H2O l’Acqua system gives you chilled, sparkling, room temperature and hot water. A free water test tells us which one fits your home.';
+        if(/test|free/.test(q)) return 'Yes, the water test is free and we do it right at your home. Want to pick a day? I just need your name, address and phone number.';
+        if(/where|locat|area|toms|town/.test(q)) return 'We’re based in Toms River, New Jersey. Where are you located?';
+        return 'Thanks for reaching out to H2O L’Acqua. Let me get that to the team. What’s your name and the best number to reach you?';
+      }}
+  };
+  var RULES=' Rules: reply in 1 to 3 short plain sentences. Be friendly and direct. Never give prices, timelines or guarantees. If you do not know, say someone will follow up and ask for a name and best phone number. Do not use markdown.';
+  var thread=document.getElementById('lcThread'), badge=document.getElementById('lcBadge'), lcNote=document.getElementById('lcNote'), lcName=document.getElementById('lcName'),
+      quick=document.getElementById('lcQuick'), input=document.getElementById('askInput'), sendBtn2=document.getElementById('lcSend'), sampleFn=null, hist=[], busy=false, cur='gem';
+  function bubble(cls,text){ var p=document.createElement('p'); p.className=cls; p.textContent=text; thread.appendChild(p); thread.scrollTop=thread.scrollHeight; return p; }
+  function setBiz(b){
+    cur=b; hist=[]; thread.innerHTML=''; quick.innerHTML=''; lcName.textContent=BIZ[b].name; bubble('b',BIZ[b].hello);
+    BIZ[b].quick.forEach(function(q){ var x=document.createElement('button'); x.type='button'; x.textContent=q; x.addEventListener('click',function(){ ask(q); }); quick.appendChild(x); });
+    [].slice.call(document.querySelectorAll('#lcSwitch button')).forEach(function(x){ x.setAttribute('aria-pressed',x.dataset.biz===b?'true':'false'); });
+  }
+  function done(){ busy=false; sendBtn2.disabled=false; }
+  function ask(q){
+    q=(q||'').trim(); if(!q||busy) return;
+    busy=true; sendBtn2.disabled=true; bubble('c',q);
+    var el=bubble('b','…'), biz=BIZ[cur];
+    function fallback(){ el.textContent=biz.canned(q.toLowerCase()); thread.scrollTop=thread.scrollHeight; done(); }
+    if(!sampleFn){ setTimeout(fallback,650); return; }
+    var prompt=biz.facts+RULES+'\n\nConversation so far:\n'+hist.join('\n')+'\nCustomer: '+q+'\n\nWrite only the assistant’s next reply.';
+    sampleFn(prompt,{cache:false,modelTier:'quick',onText:function(e){ if(e&&e.text){ el.textContent=e.text; thread.scrollTop=thread.scrollHeight; } }})
+      .then(function(r){ var t=(r&&r.text||'').trim(); if(!t){ fallback(); return; } el.textContent=t; hist.push('Customer: '+q,'Assistant: '+t); if(hist.length>12) hist=hist.slice(-12); done(); })
+      .catch(function(){ sampleFn=null; badge.textContent='DEMO'; lcNote.hidden=false; fallback(); });
+  }
+  document.getElementById('lcForm').addEventListener('submit',function(e){ e.preventDefault(); var q=input.value; input.value=''; ask(q); });
+  [].slice.call(document.querySelectorAll('#lcSwitch button')).forEach(function(x){ x.addEventListener('click',function(){ if(!busy) setBiz(x.dataset.biz); }); });
+  setBiz('gem');
+  if(window.claude&&typeof claude.use==='function'){
+    claude.use('sample').then(function(fn){ if(fn){ sampleFn=fn; badge.textContent='LIVE AI'; lcNote.hidden=true; } }).catch(function(){});
+  }
+})();
+</script>
+
+</body>
+</html>
